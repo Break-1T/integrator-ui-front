@@ -11,7 +11,7 @@ const workerIsSelected = computed(() => routerStore.getSelectedWorker != null &&
 <style lang="scss" scoped>
 .select-worker-info {
   height: 100%;
-
+  background-color: var(--p-surface-300);
   display: flex;
   justify-content: center;
   align-items: center;

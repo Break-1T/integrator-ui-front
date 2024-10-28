@@ -14,16 +14,15 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 .header {
   align-self: center;
   width: 100%;
-  background-color: var(--p-surface-300);
+  background-color: var(--p-surface-100);
 }
 
 .content {
   flex: 1 0 auto;
   display: flex;
-  gap: 0.5rem;
 
   .sidebar {
-    min-width: 200px;
+    max-width: 210px;
   }
 
   .main-content {
@@ -33,7 +32,7 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 
 .footer {
   width: 100%;
-  background-color: var(--p-surface-300);
+  background-color: var(--p-surface-100);
   text-align: end;
   padding-right: 1rem;
 }
@@ -42,7 +41,7 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 <template>
   <div class="layout">
     <header class="header">
-      <img src="/logo.png" alt="DataBridge logo" style="height: 45px;">
+      <img src="/logo.png" alt="DataBridge logo" style="height: 45px; padding: 4px;">
     </header>
     <main class="content">
       <nav class="sidebar">

@@ -36,9 +36,9 @@ onMounted(async () => {
 
 <template>
     <div class="sidebar">
-      <IconField class="search-worker">
+      <IconField class="search-bar">
         <InputIcon class="pi pi-search" />
-        <InputText v-model="searchWorker" placeholder="Search" />
+        <InputText v-model="searchWorker" placeholder="Search" class="input" />
       </IconField>
 
       <button class="worker-label" :class="{ 'selected': workerName === selectedWorker}" v-for="workerName in workerNames" @click="selectWorker(workerName)">{{ workerName }}</button>
@@ -48,19 +48,26 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
+
 .sidebar {
   position: relative;
   height: 100%;
-  background-color: var(--p-surface-400);
+  width: 100%;
+
+  background-color: var(--p-surface-100);
 
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
+  border-top: 1px solid var(--p-surface-300);
 }
 
-.search-worker{
-  background-color: bisque;
+.search-bar{
   margin-bottom: 1rem;
+  width: 100%;
+  .input{
+    width: 100%;
+  }
 }
 
 .worker-label {
