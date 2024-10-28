@@ -5,7 +5,4 @@
 @import "base.css";
 @import 'primeicons/primeicons.css';
 
-#app {
-  background-color: whitesmoke;
-  /* font-weight: normal; */
-}
+#app {}

@@ -43,7 +43,7 @@ onMounted(async () => {
 
       <button class="worker-label" :class="{ 'selected': workerName === selectedWorker}" v-for="workerName in workerNames" @click="selectWorker(workerName)">{{ workerName }}</button>
 
-      <Button class="create-worker" severity="success" label="Create Worker" icon="pi pi-plus" @click="createWorker"></Button>
+      <Button class="create-worker" label="Create Worker" icon="pi pi-plus" @click="createWorker"></Button>
     </div>
 </template>
 
@@ -51,7 +51,7 @@ onMounted(async () => {
 .sidebar {
   position: relative;
   height: 100%;
-  background-color: #D2D7DF;
+  background-color: var(--p-surface-400);
 
   display: flex;
   flex-direction: column;
@@ -81,11 +81,10 @@ onMounted(async () => {
 
 .create-worker {
   position: absolute;
-  padding: 0.5rem;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
+  bottom: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
 }
 
 </style>

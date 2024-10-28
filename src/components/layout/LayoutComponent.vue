@@ -14,7 +14,7 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 .header {
   align-self: center;
   width: 100%;
-  background-color: #DFDDD0;
+  background-color: var(--p-surface-300);
 }
 
 .content {
@@ -32,16 +32,17 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 }
 
 .footer {
-  align-self: center;
   width: 100%;
-  background-color: #DFDDD0;
+  background-color: var(--p-surface-300);
+  text-align: end;
+  padding-right: 1rem;
 }
 </style>
 
 <template>
   <div class="layout">
     <header class="header">
-      <img src="/logo.png" alt="DataBridge logo" style="height: 50px;">
+      <img src="/logo.png" alt="DataBridge logo" style="height: 45px;">
     </header>
     <main class="content">
       <nav class="sidebar">
@@ -51,6 +52,6 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
         <router-view></router-view>
       </aside>
     </main>
-    <footer class="footer">footer</footer>
+    <footer class="footer">© DataBridge 2024</footer>
   </div>
 </template>
