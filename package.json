@@ -1,6 +1,6 @@
 {
   "name": "integrator_ui_front",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/themes": "^4.1.1",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
     "pinia": "^2.2.4",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.1.1",
+    "tailwindcss-primeui": "^0.3.4",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },
@@ -32,7 +38,9 @@
     "eslint-plugin-vue": "^9.29.0",
     "jsdom": "^25.0.1",
     "npm-run-all2": "^7.0.1",
+    "postcss-import": "^16.1.0",
     "prettier": "^3.3.3",
+    "sass-embedded": "^1.80.4",
     "typescript": "~5.6.0",
     "vite": "^5.4.10",
     "vite-plugin-vue-devtools": "^7.5.3",
