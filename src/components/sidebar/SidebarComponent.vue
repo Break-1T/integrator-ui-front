@@ -15,9 +15,13 @@ const searchWorker = ref<string>("");
 const workerNames = computed(() => deploymentStore.getDeployments.filter(d => d.includes(searchWorker.value)));
 const selectedWorker = computed(() => routerStore.getSelectedWorker);
 
+if (router.currentRoute.value.params.workerName) {
+  routerStore.setSelectedWorker(<string>router.currentRoute.value.params.workerName);
+}
+
 const selectWorker = (workerName: string) => {
   routerStore.setSelectedWorker(workerName);
-  router.push({name: 'integrations', params: {workerName: workerName}});
+  router.push({name: 'workers', params: { workerName: workerName, section: 'Integration Points'}});
 }
 
 const createWorker = () => {

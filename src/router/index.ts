@@ -10,16 +10,9 @@ const router = createRouter({
       redirect: { name: 'workers' },
       children: [
         {
-          path: 'workers',
+          path: 'workers/:workerName?/:section?',
           name: 'workers',
-          component: () => import('@/components/workersPanel/WorkersPanelComponent.vue'),
-          children: [
-            {
-              path: ':workerName/integrations',
-              name: 'integrations',
-              component: () => import('@/components/workersPanel/integrations/IntegrationsComponent.vue'),
-            }
-          ]
+          component: () => import('@/components/workersPanel/WorkersPanelComponent.vue')
         },
       ],
     },

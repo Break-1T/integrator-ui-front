@@ -9,6 +9,7 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 
   width: 100vw !important;
   height: 100vh !important;
+  overflow: hidden;
 }
 
 .header {
@@ -22,7 +23,8 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
   display: flex;
 
   .sidebar {
-    max-width: 210px;
+    flex: 0;
+    min-width: 200px;
   }
 
   .main-content {
@@ -31,7 +33,9 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 }
 
 .footer {
+  flex: 0;
   width: 100%;
+  height: 100%;
   background-color: var(--p-surface-100);
   text-align: end;
   padding-right: 1rem;
