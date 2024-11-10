@@ -1,5 +1,6 @@
 /* eslint-disable vue/multi-word-component-names */
-import './assets/main.css';
+import './assets/talwind.css';
+import './assets/base.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';

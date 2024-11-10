@@ -1,4 +1,5 @@
 module.exports = {
   // ...
-  plugins: [require('tailwindcss-primeui')]
+  plugins: [require('tailwindcss-primeui')],
+  content: ["./src/**/*.{html,js}"],
 };
