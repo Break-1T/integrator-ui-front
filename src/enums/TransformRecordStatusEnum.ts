@@ -8,3 +8,14 @@ export enum TransformRecordStatusEnum {
   SendError = 7,
   TransformError = 8,
 }
+
+export const TransformRecordStatusText: Record<TransformRecordStatusEnum, string> = {
+  [TransformRecordStatusEnum.AwaitingConfirmation]: "Awaiting Confirmation",
+  [TransformRecordStatusEnum.NotConfirmed]: "Not Confirmed",
+  [TransformRecordStatusEnum.Confirmed]: "Confirmed",
+  [TransformRecordStatusEnum.Ignored]: "Ignored",
+  [TransformRecordStatusEnum.AwaitingTransformation]: "Awaiting Transformation",
+  [TransformRecordStatusEnum.UnexpectedError]: "Unexpected Error",
+  [TransformRecordStatusEnum.SendError]: "Send Error",
+  [TransformRecordStatusEnum.TransformError]: "Transform Error",
+};

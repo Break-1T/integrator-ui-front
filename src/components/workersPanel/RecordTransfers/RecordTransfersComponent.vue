@@ -27,15 +27,21 @@
       <Column field="recordType" header="Record Type" sortable />
       <Column field="source" header="Source" sortable />
       <Column field="target" header="Target" sortable />
-      <Column field="status" header="Status" sortable />
+      <Column field="status" header="Status" sortable>
+        <template #body="{ data }">
+          {{ getStatusString(data) }}
+        </template>
+      </Column>
       <Column field="statusMessage" header="Status Message" sortable />
     </DataTable>
   </div>
 </template>
 
+
 <script setup lang="ts">
 import type { RecordTransfer } from '@/classes/RecordTransfer';
 import { RecordTransferFilters } from '@/classes/RecordTransferFilters';
+import { RecordTransferStatusEnum, RecordTransferStatusText } from '@/enums/RecordTransferStatusEnum';
 import { useRecordTransfersStore } from '@/stores/RecordTransfersStore';
 import { useToast } from 'primevue/usetoast';
 import { ref, toRefs } from 'vue';
@@ -45,16 +51,22 @@ const props = defineProps({
 });
 
 const { workerName } = toRefs(props);
-
 const recordTransfersStore = useRecordTransfersStore();
 const toast = useToast();
 
 const recordTransfers = ref<RecordTransfer[]>([]);
 const tableLoading = ref(false);
 
+const getStatusString = (data: RecordTransfer) => {
+  return RecordTransferStatusText[data.status as RecordTransferStatusEnum] || "Unknown";
+}
+
 const loadRecordTransfers = async () => {
   tableLoading.value = true;
-  let loadRTResult = await recordTransfersStore.getRecordTransfersAsync(props.workerName, new RecordTransferFilters());
+  let filters = new RecordTransferFilters();
+  filters.pageSize = 20;
+  filters.pageNumber = 1;
+  let loadRTResult = await recordTransfersStore.getRecordTransfersAsync(workerName.value, filters);
 
   if (!loadRTResult.IsSuccess) {
     toast.add({ severity: 'error', summary: 'Error', detail: loadRTResult.ErrorMessage });
@@ -68,5 +80,4 @@ const loadRecordTransfers = async () => {
 }
 
 loadRecordTransfers();
-
 </script>

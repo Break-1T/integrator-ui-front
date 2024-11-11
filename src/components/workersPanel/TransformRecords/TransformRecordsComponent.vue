@@ -32,8 +32,12 @@
       :rows="10" :rowsPerPageOptions="[10, 25, 50, 100]">
       <Column field="recCreated" header="Rec Created" sortable />
       <Column field="recModified" header="Rec Modified" sortable />
-      <Column field="status" header="Status" sortable />
-      <Column field="transformRecordId" header="RecordTransfer Id" sortable />
+      <Column field="status" header="Status" sortable>
+        <template #body="{ data }">
+          {{ getStatusString(data) }}
+        </template>
+      </Column>
+      <Column field="transformRecordId" header="Transform Record Id" sortable />
       <Column field="inRecordTransferId" header="In RecordTransfer Id" sortable />
       <Column field="outRecordTransferId" header="Out RecordTransfer Id" sortable />
       <Column field="entityVersion" header="Entity Version" sortable />
@@ -53,6 +57,7 @@ import { useTransformRecordsStore } from '@/stores/TransformRecordsStore';
 import { useToast } from 'primevue/usetoast';
 import type { TransformRecord } from '@/classes/TransformRecord';
 import { TransformRecordsFilters } from '@/classes/TransformRecordsFilters';
+import { TransformRecordStatusEnum, TransformRecordStatusText } from '@/enums/TransformRecordStatusEnum';
 
 const props = defineProps({
   workerName: { type: String, required: true }
@@ -63,9 +68,16 @@ const tableLoading = ref(false);
 const toast = useToast();
 const transfersRecordsStore = useTransformRecordsStore();
 
+const getStatusString = (data: TransformRecord) => {
+  return TransformRecordStatusText[data.status as TransformRecordStatusEnum] || "Unknown";
+}
+
 const loadRecordTransfers = async () => {
   tableLoading.value = true;
-  const loadTRResult = await transfersRecordsStore.getTransformRecordsAsync(props.workerName, new TransformRecordsFilters());
+  let filters = new TransformRecordsFilters();
+  filters.pageNumber = 1;
+  filters.pageSize = 25;
+  const loadTRResult = await transfersRecordsStore.getTransformRecordsAsync(props.workerName, filters);
 
   if (!loadTRResult.IsSuccess) {
     toast.add({ severity: 'error', summary: 'Error', detail: loadTRResult.ErrorMessage });

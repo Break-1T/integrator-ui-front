@@ -1,9 +1,9 @@
 <template>
-  <Dialog header="Create Integration" :visible="visible" modal @hide="$emit('hide')" class="create-integration-dialog"
-    :style="{ width: '700px', maxWidth: '90vw', minWidth: '600px' }">
+  <Dialog header="Create Worker" :visible="visible" :closable="false" modal @hide="$emit('hide')"
+    class="create-integration-dialog" :style="{ width: '700px', maxWidth: '90vw', minWidth: '600px' }">
     <div class="form-container">
       <div class="form-field half-width">
-        <label for="integrationName">Integration Name</label>
+        <label for="integrationName">Worker Name</label>
         <InputText id="integrationName" v-model="integrationName" />
       </div>
       <div class="form-field half-width">
