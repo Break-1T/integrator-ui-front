@@ -6,46 +6,60 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 .layout {
   display: flex;
   flex-direction: column;
-
-  width: 100vw !important;
-  height: 100vh !important;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
 .header {
-  align-self: center;
+  display: flex;
+  align-items: center;
   width: 100%;
   background-color: var(--p-surface-100);
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+}
+
+.header img {
+  height: 45px;
 }
 
 .content {
-  flex: 1 0 auto;
+  flex: 1;
   display: flex;
+  overflow: hidden;
 
   .sidebar {
-    flex: 0;
     min-width: 200px;
+    max-width: 15vw;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   .main-content {
-    flex: 1 0 auto;
+    flex: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 }
 
 .footer {
-  flex: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   width: 100%;
-  height: 100%;
   background-color: var(--p-surface-100);
-  text-align: end;
-  padding-right: 1rem;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--p-surface-300);
 }
 </style>
 
 <template>
   <div class="layout">
     <header class="header">
-      <img src="/logo.png" alt="DataBridge logo" style="height: 45px; padding: 4px;">
+      <img src="/logo.png" alt="DataBridge logo" />
     </header>
     <main class="content">
       <nav class="sidebar">

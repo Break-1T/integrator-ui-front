@@ -11,9 +11,26 @@ const router = createRouter({
       redirect: { name: 'workers' },
       children: [
         {
-          path: 'workers/:workerName?/:section?',
+          path: 'workers/:workerName?',
           name: 'workers',
-          component: () => import('@/components/workersPanel/WorkersPanelComponent.vue')
+          component: () => import('@/components/workersPanel/WorkersPanelComponent.vue'),
+          children:[
+            {
+              path: 'integration-points',
+              name: 'IntegrationPoints',
+              component: () => import('@/components/workersPanel/integrations/IntegrationsComponent.vue'),
+            },
+            {
+              path: 'record-transfers',
+              name: 'RecordTransfers',
+              component: () => import('@/components/workersPanel/recordTransfers/RecordTransfersComponent.vue'),
+            },
+            {
+              path: 'transform-records',
+              name: 'TransformRecords',
+              component: () => import('@/components/workersPanel/transformRecords/TransformRecordsComponent.vue'),
+            }
+          ]
         },
       ],
     },
