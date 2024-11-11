@@ -3,6 +3,8 @@
   width: 100% !important;
   height: 100% !important;
 
+  background-color: var(--p-surface-900);
+
   overflow: auto;
 }
 
@@ -24,7 +26,7 @@
       <Column field="targetId" header="Target Id" sortable />
       <Column field="recordType" header="Record Type" sortable />
       <Column field="source" header="Source" sortable />
-      <Column field="target" header="target" sortable />
+      <Column field="target" header="Target" sortable />
       <Column field="status" header="Status" sortable />
       <Column field="statusMessage" header="Status Message" sortable />
     </DataTable>

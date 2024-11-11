@@ -5,18 +5,20 @@
   height: 100%;
   width: 100%;
   overflow: auto;
+
+  background-color: var(--p-surface-900);
 }
 
 .datatable {
   flex: 1;
   width: 100%;
-  
+
   .p-datatable-wrapper {
     overflow-x: auto;
   }
 
-  .p-datatable-thead > tr > th, 
-  .p-datatable-tbody > tr > td {
+  .p-datatable-thead>tr>th,
+  .p-datatable-tbody>tr>td {
     white-space: nowrap;
     padding: 0.75rem 1rem;
   }
@@ -25,19 +27,9 @@
 
 <template>
   <div class="container">
-    <DataTable 
-      :value="transformRecords" 
-      :loading="tableLoading"
-      class="datatable content-mobile-responsive"
-      removableSort 
-      scrollable 
-      scroll-height="flex"
-      data-key="transformRecordId" 
-      filter-display="menu"
-      paginator 
-      :rows="10" 
-      :rowsPerPageOptions="[10, 25, 50, 100]"
-    >
+    <DataTable :value="transformRecords" :loading="tableLoading" class="datatable content-mobile-responsive"
+      removableSort scrollable scroll-height="flex" data-key="transformRecordId" filter-display="menu" paginator
+      :rows="10" :rowsPerPageOptions="[10, 25, 50, 100]">
       <Column field="recCreated" header="Rec Created" sortable />
       <Column field="recModified" header="Rec Modified" sortable />
       <Column field="status" header="Status" sortable />

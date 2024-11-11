@@ -114,7 +114,6 @@ const workerIsSelected = computed(() => !!routerStore.getSelectedWorker);
   overflow-y: auto;
   background-color: var(--p-surface-200);
   border-radius: 0.5rem;
-  padding: 1rem;
   box-sizing: border-box;
   max-height: calc(100% - 5rem);
   /* Ограничение высоты с учетом панели вкладок и отступов */

@@ -23,7 +23,7 @@ if (router.currentRoute.value.params.workerName) {
 
 const selectWorker = (workerName: string) => {
   routerStore.setSelectedWorker(workerName);
-  router.push({ name: 'workers', params: { workerName: workerName, section: 'Integration Points' } });
+  router.push({ name: 'IntegrationPoints', params: { workerName: workerName } });
 };
 
 // Открытие диалогового окна для создания новой интеграции
@@ -52,17 +52,15 @@ onMounted(async () => {
       <InputText v-model="searchWorker" placeholder="Search" class="input" />
     </IconField>
 
-    <button class="worker-label" :class="{ 'selected': workerName === selectedWorker }" v-for="workerName in workerNames" @click="selectWorker(workerName)">
+    <button class="worker-label" :class="{ 'selected': workerName === selectedWorker }"
+      v-for="workerName in workerNames" @click="selectWorker(workerName)">
       {{ workerName }}
     </button>
 
     <Button class="create-worker" label="Create Worker" icon="pi pi-plus" @click="createWorker"></Button>
 
     <!-- Диалоговое окно создания интеграции -->
-    <NewWorkerComponent 
-      :visible="dialogVisible" 
-      @hide="closeDialog" 
-    />
+    <NewWorkerComponent :visible="dialogVisible" @hide="closeDialog" />
   </div>
 </template>
 
@@ -81,6 +79,7 @@ onMounted(async () => {
 .search-bar {
   margin-bottom: 1rem;
   width: 100%;
+
   .input {
     width: 100%;
   }
