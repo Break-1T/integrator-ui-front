@@ -36,7 +36,7 @@ import type { RecordTransfer } from '@/classes/RecordTransfer';
 import { RecordTransferFilters } from '@/classes/RecordTransferFilters';
 import { useRecordTransfersStore } from '@/stores/RecordTransfersStore';
 import { useToast } from 'primevue/usetoast';
-import { onMounted, ref, toRefs, watch } from 'vue';
+import { ref, toRefs } from 'vue';
 
 const props = defineProps({
   workerName: { type: String, required: true }
@@ -49,6 +49,7 @@ const toast = useToast();
 
 const recordTransfers = ref<RecordTransfer[]>([]);
 const tableLoading = ref(false);
+
 const loadRecordTransfers = async () => {
   tableLoading.value = true;
   let loadRTResult = await recordTransfersStore.getRecordTransfersAsync(props.workerName, new RecordTransferFilters());
@@ -64,10 +65,6 @@ const loadRecordTransfers = async () => {
   tableLoading.value = false;
 }
 
-watch(workerName, async () => {
-  await loadRecordTransfers();
-})
-
-// loadRecordTransfers();
+loadRecordTransfers();
 
 </script>

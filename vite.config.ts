@@ -12,9 +12,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  server: {
-    port: 8080,
-    strictPort: true,
-    hmr: false
+  server:{
+    open: true,
   }
 })

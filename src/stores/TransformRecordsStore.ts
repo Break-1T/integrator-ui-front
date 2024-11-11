@@ -10,7 +10,7 @@ import type { TransformRecord } from '@/classes/TransformRecord'
 export const useTransformRecordsStore = defineStore('transformRecordsStore', () => {
   const transformRecords = ref<string[]>([]);
 
-  async function getRecordTransfersAsync(workerName: string, filters: TransformRecordsFilters): Promise<ServiceObjectResult<TransformRecord[]>> {
+  async function getTransformRecordsAsync(workerName: string, filters: TransformRecordsFilters): Promise<ServiceObjectResult<TransformRecord[]>> {
     const serviceResult = new ServiceObjectResult<TransformRecord[]>()
 
     try {
@@ -34,6 +34,6 @@ export const useTransformRecordsStore = defineStore('transformRecordsStore', () 
   }
 
   return {
-    getRecordTransfersAsync
+    getTransformRecordsAsync
   }
 })
