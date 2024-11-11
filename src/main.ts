@@ -8,6 +8,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 import PrimeVue from 'primevue/config';
+import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
 
 import Drawer from 'primevue/drawer';
@@ -58,5 +59,6 @@ app.component('Panel', Panel);
 app.component('BlockUI', BlockUI);
 app.component('DataView', DataView);
 app.component('Dialog', Dialog);
+app.component('Toast', Toast);
 
 app.mount('#app');

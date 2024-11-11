@@ -36,12 +36,6 @@ const closeDialog = () => {
   dialogVisible.value = false;
 };
 
-const saveIntegration = (integrationData) => {
-  console.log('Сохранение интеграции:', integrationData);
-  // Реализуйте логику сохранения новой интеграции
-  closeDialog();
-};
-
 onMounted(async () => {
   let serviceResult = await deploymentStore.loadDeploymentNamesAsync();
 
@@ -68,7 +62,6 @@ onMounted(async () => {
     <NewWorkerComponent 
       :visible="dialogVisible" 
       @hide="closeDialog" 
-      @save="saveIntegration" 
     />
   </div>
 </template>
