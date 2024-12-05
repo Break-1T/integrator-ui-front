@@ -10,6 +10,7 @@ import router from './router';
 import PrimeVue from 'primevue/config';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
+import VueCookies from 'vue-cookies';
 
 import Drawer from 'primevue/drawer';
 import Button from 'primevue/button';
@@ -38,8 +39,8 @@ app.use(router);
 app.use(PrimeVue, {
   theme: 'none'
 });
-
 app.use(ToastService);
+app.use(VueCookies, { expires: '12h' });
 
 app.component('Drawer', Drawer);
 app.component('Button', Button);
@@ -62,3 +63,5 @@ app.component('Dialog', Dialog);
 app.component('Toast', Toast);
 
 app.mount('#app');
+
+export default app;

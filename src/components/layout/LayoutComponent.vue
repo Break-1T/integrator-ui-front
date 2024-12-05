@@ -1,5 +1,27 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import SidebarComponent from '../sidebar/SidebarComponent.vue';
+import CookieHelper from '@/helpers/CookieHelper';
+import { useRouter } from 'vue-router';
+import AxiosHelper from '@/helpers/AxiosHelper';
+
+const router = useRouter();
+
+const userLoggedIn = ref(false);
+
+const initUserData = () => {
+  let accessToken = CookieHelper.getAccessTokenCookie();
+  let refreshToken = CookieHelper.getRefreshTokenCookie();
+  if (!accessToken && !refreshToken) {
+    router.push({ name: 'login' });
+  } else if (accessToken) {
+    AxiosHelper.setAxiosAuthorizationToken(accessToken);
+    userLoggedIn.value = true;
+  }
+}
+
+initUserData();
+
 </script>
 
 <style lang="scss" scoped>
@@ -57,7 +79,7 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
 </style>
 
 <template>
-  <div class="layout">
+  <div v-if="userLoggedIn" class="layout">
     <header class="header">
       <img src="/logo.png" alt="DataBridge logo" />
     </header>
@@ -70,5 +92,8 @@ import SidebarComponent from '../sidebar/SidebarComponent.vue';
       </aside>
     </main>
     <footer class="footer">© DataBridge 2024</footer>
+  </div>
+  <div v-else>
+    Loading ...
   </div>
 </template>
