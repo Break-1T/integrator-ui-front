@@ -24,7 +24,10 @@ const logOut = () => {
   CookieHelper.removeAccessTokenCookie();
   CookieHelper.removeRefreshTokenCookie();
   AxiosHelper.removeAxiosAuthorizationToken();
-  router.push("/login");
+  router.push("/login").then(() => {
+    location.reload();
+  });
+
 }
 
 initUserData();
