@@ -20,6 +20,13 @@ const initUserData = () => {
   }
 }
 
+const logOut = () => {
+  CookieHelper.removeAccessTokenCookie();
+  CookieHelper.removeRefreshTokenCookie();
+  AxiosHelper.removeAxiosAuthorizationToken();
+  router.push("/login");
+}
+
 initUserData();
 
 </script>
@@ -35,6 +42,7 @@ initUserData();
 
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   background-color: var(--p-surface-100);
@@ -82,6 +90,7 @@ initUserData();
   <div v-if="userLoggedIn" class="layout">
     <header class="header">
       <img src="/logo.png" alt="DataBridge logo" />
+      <Button @click="logOut" icon="pi pi-sign-out" />
     </header>
     <main class="content">
       <nav class="sidebar">
