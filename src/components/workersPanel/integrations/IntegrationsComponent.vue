@@ -8,11 +8,11 @@
         <Column header="Settings">
           <template #body="slotProps">
             <Button label="View Settings" icon="pi pi-eye" class="p-button-text"
-                    @click="showSettings(slotProps.data.settings)" />
+              @click="showSettings(slotProps.data.settings)" />
           </template>
         </Column>
       </DataTable>
-      
+
       <Dialog header="Job Settings" v-model:visible="dialogVisible" modal class="settings-dialog">
         <div v-if="currentSettings && Object.keys(currentSettings).length > 0" class="settings-list">
           <div class="setting-item" v-for="(value, key) in currentSettings" :key="key">
@@ -29,19 +29,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, toRefs, watch } from 'vue';
 import { ArrayHelper } from '@/helpers/ArrayHelper';
 import { useIntegrationsStore } from '@/stores/IntegrationsStore';
 import { useToast } from 'primevue/usetoast';
+import { useRouterStore } from '@/stores/RouterStore';
 
 const props = defineProps({
   workerName: { type: String, required: true }
 });
 
+const routerStore = useRouterStore();
+const workerName = computed(() => routerStore.getSelectedWorker);
+
 const toast = useToast();
 const integrationStore = useIntegrationsStore();
 
-const blocked = ref(false); 
+const blocked = ref(false);
 const dialogVisible = ref(false);
 const currentSettings = ref<Record<string, any> | null>(null);
 
@@ -70,6 +74,10 @@ const loadJobsAsync = async () => {
   blocked.value = false;
 };
 
+watch(workerName, async () => {
+  await loadJobsAsync();
+})
+
 loadJobsAsync();
 </script>
 
@@ -77,14 +85,14 @@ loadJobsAsync();
 .job-table {
   margin-top: 1em;
 
-  .p-datatable-thead > tr > th {
+  .p-datatable-thead>tr>th {
     background-color: #f1f1f1;
     color: #333;
     font-weight: bold;
     text-align: left;
   }
 
-  .p-datatable-tbody > tr > td {
+  .p-datatable-tbody>tr>td {
     padding: 0.5em;
     color: #555;
     vertical-align: top;
@@ -106,7 +114,8 @@ loadJobsAsync();
   }
 
   .setting-item {
-    flex: 1 1 calc(50% - 1em); /* Два столбца */
+    flex: 1 1 calc(50% - 1em);
+    /* Два столбца */
     display: flex;
     flex-direction: column;
     padding: 0.5em;
