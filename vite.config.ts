@@ -28,8 +28,5 @@ export default defineConfig({
             assetFileNames: `[name].${hash}.[ext]`
         }
     }
-  },
-  define: {
-    VITE_INTEGRATOR_API_URL: process.env.VITE_INTEGRATOR_API_URL,
   }
 });

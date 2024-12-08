@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DataBridge</title>
   </head>
+  <script>
+    window.__ENV__ = {
+      VITE_INTEGRATOR_API_URL: '%%VITE_INTEGRATOR_API_URL%%'
+    };
+  </script>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>

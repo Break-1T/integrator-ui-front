@@ -3,8 +3,14 @@ import { useAuthStore } from '@/stores/AuthStore';
 import axios, { AxiosError } from 'axios'
 import CookieHelper from '@/helpers/CookieHelper';
 
+let backendUrl = import.meta.env.VITE_INTEGRATOR_API_URL;
+
+if (window?.__ENV__?.VITE_INTEGRATOR_API_URL && !window.__ENV__.VITE_INTEGRATOR_API_URL.includes('%%')) {
+  backendUrl = window?.__ENV__?.VITE_INTEGRATOR_API_URL;
+}
+
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_INTEGRATOR_API_URL
+  baseURL: backendUrl
 });
 
 const retryRequestHeader = "RETRY_REQUEST";
