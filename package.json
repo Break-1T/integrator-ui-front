@@ -2,7 +2,7 @@
   "name": "integrator_ui_front",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -17,6 +17,7 @@
     "@primevue/themes": "^4.1.1",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
+    "express": "^4.21.2",
     "pinia": "^2.2.4",
     "primeicons": "^7.0.0",
     "primevue": "^4.1.1",
